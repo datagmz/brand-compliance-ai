@@ -1,14 +1,28 @@
-﻿# Neurons Brand Compliance
+# brand-compliance-ai
 
-## Problem & Approach
+A FastAPI service to validate marketing assets against your Neurons brand-kit PDF, returning a compliance score (0–4) with detailed breakdown.
 
-### Problem  
-Marketing teams and creative agencies often struggle to ensure that ad creatives strictly adhere to brand guidelines—mistakes in logo placement, color usage or typography can dilute brand equity and cost time in manual reviews. As campaigns scale across channels, manual QA becomes a bottleneck, leading to inconsistencies and missed deadlines.
+## Features
+- Upload a Neurons brand-kit PDF and extract:
+  - Logo safe-zone (px)
+  - Primary color palette (hex codes)
+  - Typography (primary & secondary fonts)
+- Upload image assets to assess:
+  - Usage of approved fonts
+  - Logo placement safe-zone
+  - Logo color accuracy
+  - Overall palette consistency
 
-### Approach  
-We build an end-to-end, automated brand-compliance checker that combines classical computer-vision techniques with LLM-powered reasoning to validate any static ad asset against the Neurons brand kit.
+## Tech Stack
+- Python 3.10+
+- FastAPI
+- PyMuPDF for PDF parsing
+- Pillow for image handling
+- (Optional) OpenAI or your chosen LLM for multimodal checks
 
-1. **Brand-Kit Ingestion**: parse the PDF to extract safe-zone rules, fonts, colors, logo.  
-2. **Image Asset Ingestion & CV Checks**: normalize, template-match logos, cluster colors, OCR fonts.  
-3. **LLM Compliance Assessment**: feed CV metrics + brand JSON + image URL into GPT-4V for a 0–4 score & explanations.  
-4. **Results & Reporting**: FastAPI /assess endpoint + Streamlit frontend for uploads, overlays & downloadable reports.  
+## Setup
+
+1. **Clone the repo**  
+   ```bash
+   git clone <your-url> brand-compliance-ai
+   cd brand-compliance-ai
